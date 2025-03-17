@@ -12,7 +12,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [alerts, setAlerts] = useState([]);
 
-  const API_KEY = "4cbd2c45928ddc58f6d4a7e3f9d2fc18";
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
   const showWeatherAlert = (message) => {
     const alertContainer = document.querySelector(".weather-alerts-container");
@@ -28,6 +28,7 @@ const App = () => {
   };
 
   const fetchWeather = async () => {
+    console.log("Weather API Key:", import.meta.env.VITE_WEATHER_API_KEY);
     setLoading(true);
     setError("");
     setWeatherData(null);
@@ -115,6 +116,7 @@ const App = () => {
 
   // Fetch weather data by location (auto-detect)
   const fetchWeatherByLocation = () => {
+    console.log("Weather API Key:", import.meta.env.VITE_WEATHER_API_KEY);
     setLoading(true);
     setError("");
   
