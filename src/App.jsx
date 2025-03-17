@@ -28,7 +28,7 @@ const App = () => {
   };
 
   const fetchWeather = async () => {
-    console.log("Weather API Key:", import.meta.env.VITE_WEATHER_API_KEY);
+    //console.log("Weather API Key:", import.meta.env.VITE_WEATHER_API_KEY);
     setLoading(true);
     setError("");
     setWeatherData(null);
@@ -116,7 +116,7 @@ const App = () => {
 
   // Fetch weather data by location (auto-detect)
   const fetchWeatherByLocation = () => {
-    console.log("Weather API Key:", import.meta.env.VITE_WEATHER_API_KEY);
+   // console.log("Weather API Key:", import.meta.env.VITE_WEATHER_API_KEY);
     setLoading(true);
     setError("");
   
