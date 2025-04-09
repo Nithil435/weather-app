@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap:https://weatherforecaste4.netlify.app/sitemap.xml

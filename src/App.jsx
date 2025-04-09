@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import WeatherCard from "./components/WeatherCard";
 import Sidebar from "./components/sidebar";
+import { useSearchParams } from "react-router-dom"; 
 import "./index.css";
 
 const App = () => {
+  const [searchParams] = useSearchParams(); 
+  const cityFromURL = searchParams.get("city");
+
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [city, setCity] = useState("");
@@ -27,7 +31,15 @@ const App = () => {
     }
   };
 
-  const fetchWeather = async () => {
+  useEffect(() => {
+    if (cityFromURL) {
+      setCity(cityFromURL);
+      fetchWeather(cityFromURL); // 👈 auto fetch
+    }
+  }, [cityFromURL]);
+
+  const fetchWeather = async (customCity) => {
+    const cityToSearch = customCity || city;
     //console.log("Weather API Key:", import.meta.env.VITE_WEATHER_API_KEY);
     setLoading(true);
     setError("");
@@ -35,7 +47,7 @@ const App = () => {
     setForecastData(null);
     setAlerts([]);
 
-    if (!city.trim()) {
+    if (!cityToSearch.trim()) {
       setError("Please enter a valid city name.");
       setLoading(false);
       return;
