@@ -306,6 +306,38 @@ th {
   color: black;
 }
 
+.footer {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f5f4f4;
+  color: #080808;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+}
+
+.footer-content a {
+  color: #e90808;
+  text-decoration: none;
+}
+
+.footer-icons {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-icons a {
+  color: #080808;
+  transition: color 0.3s ease;
+}
+
+.footer-icons a:hover {
+  color: #878484;
+}
+
+
 
 
  /* Responsive Design for Small Screens */
@@ -421,6 +453,27 @@ th {
   /* When alert is present, add this class */
   .weather-alerts-container.show {
     display: block; /* Show when the class is applied */
+  }
+
+  .footer {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-icons {
+    margin-top: 0.5rem;
+    gap: 0.8rem;
+  }
+
+  .footer-icons a {
+    font-size: 1.2rem;
   }
  
   

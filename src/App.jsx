@@ -4,6 +4,8 @@ import WeatherCard from "./components/WeatherCard";
 import Sidebar from "./components/sidebar";
 import { useSearchParams } from "react-router-dom"; 
 import "./index.css";
+import { Helmet } from "react-helmet";
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const App = () => {
   const [searchParams] = useSearchParams(); 
@@ -225,6 +227,19 @@ const App = () => {
   
   return (
     <div className="title">
+        <Helmet>
+        <title>Weather Forecast App | Live Weather by Nithil Varma</title>
+        <meta
+          name="description"
+          content="Accurate and real-time weather forecasts with live alerts. Developed by Nithil Varma for quick weather insights by city or location."
+        />
+        <meta
+          name="keywords"
+          content="weather, forecast, live weather, temperature, city weather, weather alerts, weather app, Nithil Varma"
+        />
+        <meta name="author" content="Nithil Varma" />
+        <link rel="canonical" href="https://weatherforecaste4.netlify.app/" />
+      </Helmet>
       <h1>Weather</h1>
     <div className="app-container">
       <div className="sidebar-container">
@@ -243,6 +258,28 @@ const App = () => {
         )}
       </div>
     </div>
+    <footer className="footer">
+  <div className="footer-content">
+    <p>© {new Date().getFullYear()} Weather Forecast App. All rights reserved.</p>
+    <p>
+      Developed by{' '}
+      <a href="https://my-portfolio-chi-livid-74.vercel.app/" target="_blank" rel="noopener noreferrer">
+        Nithil Varma
+      </a>
+    </p>
+    <div className="footer-icons">
+      <a href="https://github.com/nithilvarma" target="_blank" rel="noopener noreferrer">
+        <FaGithub size={20} />
+      </a>
+      <a href="https://www.linkedin.com/in/nithil-varma" target="_blank" rel="noopener noreferrer">
+        <FaLinkedin size={20} />
+      </a>
+      <a href="mailto:nithilvarma@gmail.com">
+        <FaEnvelope size={20} />
+      </a>
+    </div>
+  </div>
+</footer>
     </div>
   );
 };
