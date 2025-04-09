@@ -10,7 +10,7 @@ const Sidebar = ({ city, setCity, fetchWeather, fetchWeatherByLocation, error, a
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
-      <button onClick={fetchWeather}>Get Weather</button>
+      <button onClick={() => fetchWeather(city)}>Get Weather</button>
       <button onClick={fetchWeatherByLocation}>Auto Detect Location</button>
       {error && <p className="error">{error}</p>}
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherCard from "./components/WeatherCard";
 import Sidebar from "./components/sidebar";
@@ -46,6 +46,8 @@ const App = () => {
     setWeatherData(null);
     setForecastData(null);
     setAlerts([]);
+    setCity(cityToSearch);
+
 
     if (!cityToSearch.trim()) {
       setError("Please enter a valid city name.");
@@ -55,7 +57,7 @@ const App = () => {
 
     try {
       const weatherResponse = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityToSearch}&appid=${API_KEY}&units=metric`
       );
       setWeatherData(weatherResponse.data);
 
@@ -66,7 +68,7 @@ const App = () => {
       );
 
       const forecastResponse = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cityToSearch}&appid=${API_KEY}&units=metric`
       );
 
       const hourlyForecast = forecastResponse.data.list.slice(0, 6).map((entry) => ({
@@ -226,7 +228,7 @@ const App = () => {
       <h1>Weather</h1>
     <div className="app-container">
       <div className="sidebar-container">
-        <Sidebar city={city} setCity={setCity} fetchWeather={fetchWeather} fetchWeatherByLocation={fetchWeatherByLocation} error={error} alerts={alerts}/>
+        <Sidebar cityToSearch={city} setCity={setCity} fetchWeather={fetchWeather} fetchWeatherByLocation={fetchWeatherByLocation} error={error} alerts={alerts}/>
       </div>
       <div className="main-container">
         {loading ? (
