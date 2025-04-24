@@ -2,6 +2,8 @@ import React from "react";
 import WeatherAlerts from "./WeatherAlerts";
 
 const Sidebar = ({ city, setCity, fetchWeather, fetchWeatherByLocation, error, alerts }) => {
+  const hasAlerts = alerts && alerts.length > 0;
+
   return (
     <div className="sidebar">
       <input
@@ -14,10 +16,12 @@ const Sidebar = ({ city, setCity, fetchWeather, fetchWeatherByLocation, error, a
       <button onClick={fetchWeatherByLocation}>Auto Detect Location</button>
       {error && <p className="error">{error}</p>}
 
-      {/* Weather Alerts Section */}
-      <div className="weather-alerts-container">
+      <div className={`weather-alerts-container${hasAlerts ? " show" : ""}`}>
         <h2>Weather Alerts</h2>
-        <WeatherAlerts alerts={alerts} />
+        {hasAlerts
+          ? <WeatherAlerts alerts={alerts} />
+          : <p>No active alerts.</p>
+        }
       </div>
     </div>
   );

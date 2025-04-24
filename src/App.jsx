@@ -4,7 +4,7 @@ import WeatherCard from "./components/WeatherCard";
 import Sidebar from "./components/sidebar";
 import { useSearchParams } from "react-router-dom"; 
 import "./index.css";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const App = () => {
@@ -82,8 +82,8 @@ const App = () => {
 
 
   // Debugging logs
-  console.log("Full Forecast List:", forecastResponse.data.list);
-  console.log("Hourly Forecast Extracted:", hourlyForecast)
+  //console.log("Full Forecast List:", forecastResponse.data.list);
+  //console.log("Hourly Forecast Extracted:", hourlyForecast)
 
       // Fetch weather alerts
       const alertResponse = await axios.get(
@@ -150,6 +150,7 @@ const App = () => {
             `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
           );
           setWeatherData(weatherResponse.data);
+          
   
           const airQualityResponse = await axios.get(
             `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
@@ -227,7 +228,7 @@ const App = () => {
   
   return (
     <div className="title">
-        <Helmet>
+        <HelmetProvider>
         <title>Weather Forecast App | Live Weather by Nithil Varma</title>
         <meta
           name="description"
@@ -239,7 +240,7 @@ const App = () => {
         />
         <meta name="author" content="Nithil Varma" />
         <link rel="canonical" href="https://weatherforecaste4.netlify.app/" />
-      </Helmet>
+        </HelmetProvider>
       <h1>Weather</h1>
     <div className="app-container">
       <div className="sidebar-container">
@@ -263,18 +264,18 @@ const App = () => {
     <p>© {new Date().getFullYear()} Weather Forecast App. All rights reserved.</p>
     <p>
       Developed by{' '}
-      <a href="https://my-portfolio-chi-livid-74.vercel.app/" target="_blank" rel="noopener noreferrer">
+      <a href="https://strong-gingersnap-96332e.netlify.app/" target="_blank" rel="noopener noreferrer">
         Nithil Varma
       </a>
     </p>
     <div className="footer-icons">
-      <a href="https://github.com/nithilvarma" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/Nithil435" target="_blank" rel="noopener noreferrer">
         <FaGithub size={20} />
       </a>
-      <a href="https://www.linkedin.com/in/nithil-varma" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.linkedin.com/in/nithilvarma" target="_blank" rel="noopener noreferrer">
         <FaLinkedin size={20} />
       </a>
-      <a href="mailto:nithilvarma@gmail.com">
+      <a href="mailto:nithilvarma435@gmail.com">
         <FaEnvelope size={20} />
       </a>
     </div>

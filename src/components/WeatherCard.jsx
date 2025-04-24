@@ -16,7 +16,7 @@ const WeatherCard = ({ data, forecast, hourlyData }) => {
     return <p>Loading weather data...</p>;
   }
 
-  console.log("Hourly Data Received:", hourlyData); // Debugging log
+  //console.log("Hourly Data Received:", hourlyData); // Debugging log
 
   if (!hourlyData) {
     return <p>Hourly data not available.</p>; // Handle undefined hourly data
@@ -148,7 +148,7 @@ const WeatherCard = ({ data, forecast, hourlyData }) => {
 
 // Hourly Weather Component
 const HourlyWeather = ({ hourlyData }) => {
-  console.log("Received hourlyData:", hourlyData); // Debugging
+  //console.log("Received hourlyData:", hourlyData); // Debugging
 
   if (!Array.isArray(hourlyData) || hourlyData.length === 0) {
     return <p>No hourly data available</p>;
