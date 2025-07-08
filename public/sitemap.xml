@@ -3,5 +3,7 @@
   <url>
     <loc>https://weatherforecaste4.netlify.app/</loc>
     <priority>1.00</priority>
+    <changefreq>daily</changefreq>
+    <lastmod>2025-07-08</lastmod>
   </url>
- 
+</urlset>
